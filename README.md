@@ -1,4 +1,4 @@
-基于Scrapy的分布式爬虫（腾讯社招）
+基于Scrapy的分布式爬虫
 ---
 ### 环境
 
@@ -9,7 +9,7 @@
 >> 在终端输入命令：scrapy version
 >> 成功输出Scrapy版本号则证明成功安装。  
 ```
-![image](https://github.com/LZC6244/Python/blob/master/images/img1.jpg)
+
 
 #### 2. Redis（Ubuntu）
 ```
@@ -21,8 +21,6 @@
 >> 在终端输入命令：redis-server redis.conf（以redis.conf为配置文件启动redis-server）
 >> 成功则显示redis-server启动界面。
 ```
-![image](https://github.com/LZC6244/Python/blob/master/images/img2.jpg)  
-![image](https://github.com/LZC6244/Python/blob/master/images/img3.jpg)
 
 #### 3. Redis（Win10）
 ```
@@ -36,9 +34,7 @@
 （以redis.windows.conf为配置文件启动redis-server）
 >> 启动成功。
 ```
-![image](https://github.com/LZC6244/Python/blob/master/images/img4.jpg)  
-![image](https://github.com/LZC6244/Python/blob/master/images/img5.jpg)  
-![image](https://github.com/LZC6244/Python/blob/master/images/img6.jpg)
+
 
 #### 4. Redis Desktop Manager（Win10）
 ```
@@ -49,16 +45,14 @@
 >> 启动Redis Desktop Manager，设置其与本地Redis数据库相连接（Master端在Windows下）
 >> 测试连接情况。
 ```
-![image](https://github.com/LZC6244/Python/blob/master/images/img7.jpg)  
-![image](https://github.com/LZC6244/Python/blob/master/images/img8.jpg)  
-![image](https://github.com/LZC6244/Python/blob/master/images/img9.jpg)
+
 
 #### 5. MongoDB
 ```
 打开终端 >> 输入命令：sudo apt-get install mongodb
 >> 再在终端输入命令：mongo –version，安装成功则输出MongoDB版本号
 ```
-![image](https://github.com/LZC6244/Python/blob/master/images/img10.jpg)
+
 
 #### 6. Robo 3T
 ```
@@ -70,9 +64,7 @@ Robo 3T是一个MongoDB的可视化工具。安装步骤如下：
 >> 在终端输入：robo3t --version，查看Robo 3T版本号
 >> 启动Robo 3T，配置连接到本地MongoDB
 ```
-![image](https://github.com/LZC6244/Python/blob/master/images/img11.jpg)  
-![image](https://github.com/LZC6244/Python/blob/master/images/img12.jpg)  
-![image](https://github.com/LZC6244/Python/blob/master/images/img13.jpg)
+
 
 ---
 
@@ -113,15 +105,14 @@ Pipeline、Middleware、Spider等所有组件的所有动作，且可自定义�
 
 #### 1. 启动Master端的redis-server
 
-启动成功如图，可以看出redis-server的运行端口为6379，版本号为3.2.100  
-![image](https://github.com/LZC6244/Python/blob/master/images/img14.jpg)
+启动成功，可以看出redis-server的运行端口为6379，版本号为3.2.100  
+
 
 #### 2. 启动两个Slave端的爬虫程序
 
 启动两个Slave端的爬虫程序，使其进入等待状态，等待Master端对其分配请求，此时爬虫程序
 已启动中间件和管道功能，并紧随其后启动爬虫功能，由于刚启动爬虫，此时爬取的网页数为0。  
-![image](https://github.com/LZC6244/Python/blob/master/images/img15.jpg)  
-![image](https://github.com/LZC6244/Python/blob/master/images/img16.jpg)
+
 
 #### 3. 向Master端添加第一个URL请求
 
@@ -129,18 +120,17 @@ Pipeline、Middleware、Spider等所有组件的所有动作，且可自定义�
 ```
 “lpush tencentspider:start_urls https://hr.tencent.com/position.php”
 ```
-![image](https://github.com/LZC6244/Python/blob/master/images/img17.jpg)
+
 
 #### 4.数据展示（Redis）及验证
 
 两个Slave端爬取完数据后，数据存储在Master端的Redis数据库。  
-![image](https://github.com/LZC6244/Python/blob/master/images/img18.jpg)
+
 
 将Redis Desktop Manager中的Value值放入“https://www.json.cn/” 网站中查看，与被爬取网站作对比，发现信息一致，爬虫成功。  
-![image](https://github.com/LZC6244/Python/blob/master/images/img19.jpg)  
-![image](https://github.com/LZC6244/Python/blob/master/images/img20.jpg)
+
 
 #### 数据展示（MongoDB）
 
 在本次分布式爬虫的最后，我们将爬取到的数据从Redis数据库转存入本地MongoDB数据库（save_2_mongodb.py）。  
-![image](https://github.com/LZC6244/Python/blob/master/images/img21.jpg)
+
